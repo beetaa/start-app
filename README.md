@@ -1,6 +1,6 @@
-# 前端模板 - Vanilla
+# 前端模板 - ES
 
-- [x] 原生 Javascript，不含任何防腐剂
+- [x] es2015, 2016, 2017, 2018
 - [x] 基于 webpack 的模块化管理和自动编译
   - [x] javascript
   - [x] css
