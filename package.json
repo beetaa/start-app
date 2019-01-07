@@ -1,0 +1,39 @@
+{
+  "name": "start-app",
+  "version": "1.0.0",
+  "description": "Templates for frontend app development.",
+  "private": true,
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beetaa/start-app.git"
+  },
+  "keywords": [
+    "template",
+    "starter"
+  ],
+  "author": "beetaa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beetaa/start-app/issues"
+  },
+  "homepage": "https://github.com/beetaa/start-app#readme",
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "eslint": "^5.12.0",
+    "file-loader": "^3.0.1",
+    "jest": "^23.6.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
