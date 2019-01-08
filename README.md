@@ -1,9 +1,9 @@
-# 前端模板 - Vanilla
+# 前端模板 - Typescript
 
-- [x] 原生 Javascript，不含任何防腐剂
+- [x] 基于 Typescript
 - [x] 基于 webpack 的模块化管理和自动编译
-  - [x] javascript
-  - [x] css
+  - [x] typescript
+  - [x] less
   - [x] 图片：png, svg, jpg, gif
   - [x] 数据：json（可根据需要加入 csv, tsv, xml 格式支持）
   - [x] 字体：woff, woff2, eot, ttf, otf
