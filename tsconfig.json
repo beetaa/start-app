@@ -1,0 +1,26 @@
+{
+  "include": [
+      "src/**/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ],
+  "files": [
+    "ts-custom.d.ts"
+  ],
+  "types": [
+    "jest"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "pretty": true,
+    "removeComments": true
+  }
+}

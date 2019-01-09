@@ -4,10 +4,10 @@ var webpack = require('webpack')
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.json']
+    extensions: ['.ts', '.js', '.json']
   },
   entry: [
-    './src/index.js'
+    './src/index.ts'
   ],
   output: {
     filename: 'bundle.js',
@@ -24,6 +24,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.css$/,
         use: [
