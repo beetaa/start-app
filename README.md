@@ -2,15 +2,21 @@
 
 - [x] 支持 vanilla js 和 es2015, 2016, 2017, 2018（基于 babel）
 - [x] 基于 webpack 的模块化管理和自动编译
-  - [ ] es2015
+  - [x] es2015
   - [x] js
   - [x] css
   - [x] 图片：png, svg, jpg, gif
   - [x] 数据：json（可根据需要加入 csv, tsv, xml 格式支持）
   - [x] 字体：woff, woff2, eot, ttf, otf
-- [ ] 基于 webpack 的开发服务器和热更新
-- [ ] 基于 jest 的单元测试，支持使用 es 语法书写测试
-- [ ] 基于 eslint 插件的语法风格检查（整合 ide 而非 webpack）
+- [x] 基于 webpack 的开发服务器和热更新
+- [x] 基于 jest 的单元测试，支持使用 es 语法书写测试
+  - [ ] watch 模式下 jest 单元测试自动化
+- [x] 基于 eslint 插件的语法风格检查（整合 ide 而非 webpack）
+- [ ] 产品级别的 webpack 发布配置
+  - [ ] 一键发布至指定 cdn （基于自写 webpack plugin 实现）
+  - [ ] 自动转化资源路径（开发和产品模式下）
+- [ ] 待定：是否需要引入 prettier 进行代码美化
+- [ ] 配置说明、规格、使用说明
 
 ## ES 基本支持
 
@@ -60,6 +66,9 @@ npm i -D bable-jest
 ```js
 
 ```
+
+> 备注：如果使用版本 7 的 Babel，则可能需要另外安装 `babel-core@^7.0.0-bridge.0`
+
 ## 备注
 
 - [webpack] 内置对 `import` 和 `export` 的支持，但不会修改除此之外的任何语句，所以其他部分若用到 **es6** 语法，应当使用 [babel] 插件进行编译。
