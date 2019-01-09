@@ -6,6 +6,8 @@
     "semicolon": [true, "never"],
     "no-console": false,
     "eofline": false,
-    "no-consecutive-blank-lines": true
+    "no-consecutive-blank-lines": true,
+    "object-literal-sort-keys": false,
+    "trailing-comma": false
   }
 }

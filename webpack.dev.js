@@ -1,10 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
 
+var VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['.ts', '.js', '.json']
+    extensions: ['.vue', '.ts', '.js', '.json']
   },
   entry: [
     './src/index.ts'
@@ -20,19 +22,27 @@ module.exports = {
     port: '3000',
     contentBase: './dist',
     hot: true,  // 开启模块热替换
-    disableHostCheck: true  // 解决 Invalid Host header
+    disableHostCheck: true,  // 解决 Invalid Host header
+    historyApiFallback: true
   },
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
         test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/.vue$/]
+        }
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader'
         ]
       },
@@ -51,6 +61,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -1,12 +1,15 @@
-import './style/app.css'
+import Vue from 'vue'
+// import HelloComponent from './components/Hello.vue'
 
-import add from './lib/myfun'
-
-const element = document.createElement('div')
-
-element.innerHTML = `<h3>hello ${add(1, 1)}</h3>`
-element.classList.add('hello')
-
-console.log('hello')
-
-document.body.appendChild(element)
+const v = new Vue({
+  el: '#app',
+  template: `
+  <div>
+    Name: <input v-model="name" type="text">
+  </div>
+  `,
+  data: { name: 'World' },
+  // components: {
+  //   HelloComponent
+  // }
+})
