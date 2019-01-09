@@ -9,7 +9,8 @@
   - [x] 字体：woff, woff2, eot, ttf, otf
 - [x] 基于 webpack 的开发服务器和热更新
 - [x] 基于 jest 的单元测试，支持 typescirpt 编写测试文件
-- [ ] 基于 tslint 插件的语法风格检查（整合 ide 而非 webpack）
+- [ ] 基于 jest 的 e2e 测试
+- [x] 基于 tslint 插件的语法风格检查（整合 ide 而非 webpack）
 
 ## 配置 [typescript]
 
@@ -118,6 +119,34 @@ npm i -D @types/jest ts-jest
 }
 ```
 
+**让 vscode 支持 ts 语法检查**
+
+安装 tslint
+
+```bash
+npm i -D tslint
+```
+
+在根目录创建 `tslint.json` 并编辑：
+
+```json
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [true, "single"],
+    "space-before-function-paren": [true, "always"],
+    "semicolon": [true, "never"],
+    "no-console": false,
+    "eofline": false,
+    "no-consecutive-blank-lines": true
+  }
+}
+```
+
+安装 `typescript-tslint-plugin` 并重启
+
+> vscode 内置 ts 语法检查，但只提供语法错误的提示，不提供格式建议。格式建议由 tslint 完成
+
 ## 备注
 
 - [webpack] 内置对 `import` 和 `export` 的支持，但不会修改除此之外的任何语句，所以其他部分若用到 **es6** 语法，应当使用 [babel] 插件进行编译。
@@ -138,3 +167,4 @@ npm i -D @types/jest ts-jest
 [jest]: https://jestjs.io/docs/zh-Hans/getting-started
 [eslint]: http://eslint.cn/
 [typescript]: https://www.tslang.cn/docs/home.html
+[tslint rules]: https://palantir.github.io/tslint/rules/
