@@ -28,6 +28,7 @@
   "homepage": "https://github.com/beetaa/start-app#readme",
   "devDependencies": {
     "@types/jest": "^23.3.12",
+    "@vue/test-utils": "^1.0.0-beta.28",
     "css-loader": "^2.1.0",
     "eslint": "^5.12.0",
     "file-loader": "^3.0.1",
@@ -37,6 +38,7 @@
     "ts-loader": "^5.3.3",
     "tslint": "^5.12.0",
     "typescript": "^3.2.2",
+    "vue-jest": "^3.0.2",
     "vue-loader": "^15.5.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.21",

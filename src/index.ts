@@ -1,15 +1,7 @@
 import Vue from 'vue'
-// import HelloComponent from './components/Hello.vue'
+import Start from './pages/Start.vue'
 
 const v = new Vue({
   el: '#app',
-  template: `
-  <div>
-    Name: <input v-model="name" type="text">
-  </div>
-  `,
-  data: { name: 'World' },
-  // components: {
-  //   HelloComponent
-  // }
+  render: (h) => h(Start, { props: { msg: 'hello world!' } })
 })

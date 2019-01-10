@@ -16,14 +16,18 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
-  devtool: 'inline-source-map',
+  devtool: '#eval-source-map',
   devServer: {
     host: '127.0.0.1',
     port: '3000',
     contentBase: './dist',
     hot: true,  // 开启模块热替换
     disableHostCheck: true,  // 解决 Invalid Host header
-    historyApiFallback: true
+    historyApiFallback: true,
+    noInfo: true
+  },
+  performance: {
+    hints: false
   },
   module: {
     rules: [

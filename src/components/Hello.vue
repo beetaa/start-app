@@ -35,5 +35,6 @@ export default Vue.extend({
 <style>
 .greeting {
   font-size: 20px;
+  color: green;
 }
 </style>

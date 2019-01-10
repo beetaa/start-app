@@ -22,6 +22,9 @@
 - [ ] *可选：vue-property-decorator*
 - [ ] *可选：prettier 代码美化*
 - [ ] 基于 tslint-vue 插件的 vue 文件 ts 代码片段格式检查支持（今后留意 vetur 是否内置）
+- [ ] 使用 html-webpack-plugin + 模板生成 index.html
+- [ ] 范例应当尽量多地体现配置能够实现的特性
+- [ ] 基于 webpack-dev-server 的 proxy 和测试数据模拟（mock, 基于 before(app) 或 setup(app)）
 
 **注意事项**
 
@@ -93,6 +96,13 @@ module.exports = {
   module: {
     rules: [
       {
+        resolve: {
+          alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+          }
+        }
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
@@ -117,13 +127,41 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
+  performance: {
+    hints: false
+  },
   plugins: [
     new VueLoaderPlugin()
   ]
 }
 ```
 
-> 解释 appendTsSuffixTo, historyApiFallback, noInfo 选项，解释 `new VueLoaderPlugin()`
+> 解释 appendTsSuffixTo, historyApiFallback, noInfo, hints 选项，解释 `new VueLoaderPlugin()`
+
+> vue 发布时分为两个版本：不含 template compiler 的纯净版和含 template compiler 的完整版，在使用 vue 单文件组件和 render 编写模板时，只需要纯净版，只有当使用字符串模板时，才需要完整版。系统缺省使用纯净版，如果需要使用完整版，则需要通过 webpack 的 alias 将 vue 映射为完整版的发行文件，否则不需要。具体可以参考官方文档 [Runtime + Compiler vs. Runtime-only]
+
+**安装 vetur, tslint-vue 插件**
+
+**配置 jest 支持 vue 组件的测试**
+
+安装 vue-test-utils 和 vue-jest
+
+```bash
+npm i -D @vue/test-utils vue-jest
+```
+
+编辑 jest.config.js，让 jest 识别 vue 文件，并通过 vue-jest 编译
+
+```js
+{
+  "moduleFileExtensions": [
+    "vue"
+  ],
+  "transform": {
+    "^.+\\.vue$": "vue-jest"
+  }
+}
+```
 
 ## 配置 [typescript]
 
@@ -343,6 +381,7 @@ message TS151001: If you have issues related to imports, you should consider set
 [jest]: https://jestjs.io/docs/zh-Hans/getting-started
 [eslint]: http://eslint.cn/
 [typescript]: https://www.tslang.cn/docs/home.html
+[微软官方的 typescript + vue 配置]: https://github.com/Microsoft/TypeScript-Vue-Starter
 [tslint rules]: https://palantir.github.io/tslint/rules/
 [vue 2.5 的 typescript 支持]: https://cn.vuejs.org/v2/guide/typescript.html
 [vue-loader 文档]: https://vue-loader.vuejs.org/zh/
@@ -368,3 +407,4 @@ message TS151001: If you have issues related to imports, you should consider set
 [单元测试 - jest mock + axios promise]: https://blog.csdn.net/sinat_33312523/article/details/82970655
 [e2e 测试 - 选型和配置]: https://blog.csdn.net/sinat_33312523/article/details/82955514
 [e2e 测试 - 基本使用]: https://blog.csdn.net/sinat_33312523/article/details/82968308
+[Runtime + Compiler vs. Runtime-only]: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
