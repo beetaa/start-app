@@ -25,6 +25,7 @@
 - [ ] 使用 html-webpack-plugin + 模板生成 index.html
 - [ ] 范例应当尽量多地体现配置能够实现的特性
 - [ ] 基于 webpack-dev-server 的 proxy 和测试数据模拟（mock, 基于 before(app) 或 setup(app)）
+- [ ] postcss 支持
 
 **注意事项**
 
@@ -300,7 +301,7 @@ npm i -D tslint
 
 ## Jest + TypeScript + vue-test-utils 的几个坑
 
-**找不到 vue 文件**
+**编译时找不到 vue 文件**
 
 ```bash
 TypeScript diagnostics (customize using `[jest-config].globals.ts-jest.diagnostics` option):
@@ -328,6 +329,26 @@ declare module "*.vue" {
   import Vue from "vue";
   export default Vue;
 }
+```
+
+**使用 VS code 编辑时提示找不到 vue 模块**
+
+```bash
+[ts] cannot find module ... 2307
+```
+
+> 解决方法，在 `tsconfig.json` 中加入 `test` 文件夹，vscode 将据此解析模块路径
+
+```json
+  //...
+  
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "test/**/*.ts"
+  ],
+  
+  //...
 ```
 
 **Jest 不认识 import**
