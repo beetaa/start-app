@@ -1,4 +1,4 @@
-# 前端模板 - Typescript + Vue
+# 前端模板 - Typescript + Vue + Vuex + Vue-router
 
 - [x] 纯 typescript 环境
 - [ ] Vue.js
