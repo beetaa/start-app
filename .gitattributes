@@ -1,0 +1,6 @@
+# 在没有设置 core.autocrlf 的情况下，正确处理项目中的换行符
+* text=auto
+
+# 明确以下为二进制文件，不会被修改
+*.png binary
+*.jpg binary
