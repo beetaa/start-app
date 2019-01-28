@@ -1,16 +1,43 @@
-# 前端模板 - Typescript
+# 前端模板 - typescript
 
-- [x] 纯 typescript 环境，不支持扩展名
-- [x] 基于 webpack 的模块化管理和自动编译
-  - [x] typescript
-  - [x] css
-  - [x] 图片：png, svg, jpg, gif
-  - [x] 数据：json（可根据需要加入 csv, tsv, xml 格式支持）
-  - [x] 字体：woff, woff2, eot, ttf, otf
-- [x] 基于 webpack 的开发服务器和热更新
-- [x] 基于 jest 的单元测试，支持 typescirpt 编写测试文件
-- [ ] 基于 jest 的 e2e 测试
-- [x] 基于 tslint 插件的语法风格检查（整合 ide 而非 webpack）
+- webpack
+  - [x] typescript 编译支持
+  - [x] 纯 css 编译支持
+  - [ ] postcss, less 预编译支持
+  - [x] json 数据导入支持
+  - [ ] csv, tsv, xml 数据导入支持
+  - [x] 图片格式：png, svg, jpg, gif
+  - [x] 字体格式：woff, woff2, eot, ttf, otf
+  - 开发环境配置
+    - [x] dev-server，支持 hot reload
+    - [x] source map 支持
+  - [ ] *生产环境配置*
+- typescript
+  - [x] 基本配置，通过 `tsconfig.json`
+  - [x] 识别非 ts 代码资源类型文件，通过 `ts-custom.d.ts`
+- 代码质量
+  - [x] tslint 编码检查
+    - [x] 基本配置， 通过`tslint.json`
+    - [x] vscode 整合，详见 vscode 配置
+  - [ ] prettier 代码格式化
+    - [ ] 配置
+    - [ ] vscode 整合
+- [ ] jest
+  - 支持 typescirpt 编写测试文件
+- [ ] cypress
+- [ ] tsdoc + typedoc + vuepress
+- [ ] docker
+- [ ] cdn
+- [ ] nginx
+- [ ] git
+  - [ ] github
+  - [ ] gogs (self hosted)
+- [ ] npm
+  - [ ] script
+
+## 目录结构
+
+## 使用说明
 
 ## 配置 [typescript]
 
@@ -158,13 +185,3 @@ npm i -D tslint
 - eslint 配置中应当设置 `env.node = true`，这样才能兼容运行与 node 环境下的脚本，如 `__dirname` 等。
 
 - 图片和字体在 `css` 中的导入是通过 `url()` 函数的，图片在 `js` 中的导入时通过 `img.src` 属性的。
-
-
-[//]: 资源和链接
-
-[webpack]: https://www.webpackjs.com/concepts/
-[babel]: https://babel.docschina.org/
-[jest]: https://jestjs.io/docs/zh-Hans/getting-started
-[eslint]: http://eslint.cn/
-[typescript]: https://www.tslang.cn/docs/home.html
-[tslint rules]: https://palantir.github.io/tslint/rules/
