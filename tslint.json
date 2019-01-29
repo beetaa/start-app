@@ -1,8 +1,7 @@
 {
-  "extends": "tslint:recommended",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
   "rules": {
     "quotemark": [true, "single"],
-    "space-before-function-paren": [true, "always"],
     "semicolon": [true, "never"],
     "no-console": false,
     "eofline": false,

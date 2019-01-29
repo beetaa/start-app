@@ -2,42 +2,58 @@
 
 - webpack
   - [x] typescript 编译支持
+  - [ ] 基于 `html-webpack-plugin` 插件动态生成 html 文件
   - [x] 纯 css 编译支持
-  - [ ] postcss, less 预编译支持
+  - [x] postcss 支持
+  - [x] less 预编译支持
   - [x] json 数据导入支持
-  - [ ] csv, tsv, xml 数据导入支持
   - [x] 图片格式：png, svg, jpg, gif
   - [x] 字体格式：woff, woff2, eot, ttf, otf
-  - 开发环境配置
+  - [ ] 正确解析本地和 cdn 资源路径
+  - **开发环境配置**
     - [x] dev-server，支持 hot reload
     - [x] source map 支持
-  - [ ] *生产环境配置*
+  - **生产环境配置**
 - typescript
   - [x] 基本配置，通过 `tsconfig.json`
   - [x] 识别非 ts 代码资源类型文件，通过 `ts-custom.d.ts`
 - 代码质量
-  - [x] tslint 编码检查
-    - [x] 基本配置， 通过`tslint.json`
-    - [x] vscode 整合，详见 vscode 配置
-  - [ ] prettier 代码格式化
-    - [ ] 配置
-    - [ ] vscode 整合
-- [ ] jest
-  - 支持 typescirpt 编写测试文件
-- [ ] cypress
-- [ ] tsdoc + typedoc + vuepress
-- [ ] docker
-- [ ] cdn
-- [ ] nginx
-- [ ] git
+  - [x] 使用 tslint 进行编码检查
+  - [x] 使用 prettier 进行代码格式化
+  - [x] 通过 `tslint-config-prettier` 让两者保持兼容
+  - [x] 与 vscode 整合
+- 测试
+  - [ ] 基于 jest 的单元测试
+  - [ ] 基于 cypress 的 e2e 测试
+  - [ ] 支持 typescirpt 编写测试文件
+  - [ ] 支持测试覆盖率
+  - [ ] 生成指定格式的测试报告
+- 文档
+  - [ ] tsdoc
+  - [ ] typedoc
+  - [ ] vuepress
+- 发布
+  - [ ] docker, docker-compose
+  - [ ] cdn
+  - [ ] nginx 反向代理配置
+  - [ ] https 证书和访问
+  - [ ] 基于 webpack 的自动发布插件
+- 代码管理
   - [ ] github
   - [ ] gogs (self hosted)
-- [ ] npm
+- 项目管理
   - [ ] script
+- vscode
+  - [x] 识别配置文件
+  - [ ] 一致的编辑器格式
 
 ## 目录结构
 
 ## 使用说明
+
+## 附加说明
+
+### prettier 支持的文件类型
 
 ## 配置 [typescript]
 
@@ -51,12 +67,8 @@ npm i -D typescript
 
 ```json
 {
-  "include": [
-      "src/**/*"
-  ],
-  "exclude": [
-      "node_modules"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "./dist/",
     "target": "es5",
@@ -107,18 +119,17 @@ npm i -D ts-loader
 在根目录中创建 `ts-custom.d.ts` 并编辑：
 
 ```ts
-declare module "*.css" {
-  const content: any;
-  export default content;
+declare module '*.css' {
+  const content: any
+  export default content
 }
 ```
 
 将 `ts-custom.d.ts` 添加到 tsconfig.json 的 files 列表：
+
 ```json
 {
-  "files": [
-    "ts-custom.d.ts"
-  ]
+  "files": ["ts-custom.d.ts"]
 }
 ```
 
