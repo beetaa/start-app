@@ -1,4 +1,4 @@
-import add from '../src/lib/myfun'
+import add from '../../src/lib/myfun'
 
 test('1 + 1 = 2', () => {
   expect(add(1, 1)).toBe(2)

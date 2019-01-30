@@ -1,16 +1,8 @@
 {
-  "include": [
-      "src/**/*"
-  ],
-  "exclude": [
-      "node_modules"
-  ],
-  "files": [
-    "ts-custom.d.ts"
-  ],
-  "types": [
-    "jest"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "files": ["ts-shim.d.ts"],
+  "types": ["jest"],
   "compilerOptions": {
     "outDir": "./dist/",
     "target": "es5",

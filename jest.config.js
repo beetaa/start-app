@@ -1,12 +1,9 @@
 module.exports = {
-  "moduleFileExtensions": [
-    "ts",
-    "js",
-    "json"
-  ],
-  "transform": {
-    "^.+\\.ts$": "ts-jest"
+  preset: 'jest-puppeteer',
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  transform: {
+    '^.+\\.ts$': 'ts-jest'
   },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts)$",
-  "testURL": "http://localhost/"
+  testPathIgnorePatterns: ['node_modules', '<rootDir>/src/'],
+  testMatch: ['**/?(*.)+(spec|test).ts']
 }

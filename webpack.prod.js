@@ -1,28 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
+// var webpack = require('webpack')
+var merge = require('webpack-merge')
+var common = require('./webpack.common.js')
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-module.exports = {
+module.exports = merge(common, {
   mode: 'production',
-  resolve: {
-    extensions: ['.js', '.json']
-  },
-  entry: [
-    './src/index.js'
-  ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
-  }
-}
+  plugins: [new UglifyJSPlugin()]
+})
