@@ -41,6 +41,33 @@ npm i -D @types/es6-shim
 
 ## webpack 自动化
 
+### 分离开发、生产环境
+
+- 安装 webpack-merge
+
+```bash
+npm i -D webpack-merge
+```
+
+- 文件结构
+
+```bash
+- webpack.common.js
+- webpack.dev.js
+- webpack.prod.js
+```
+
+- npm 运行脚本
+
+```json
+{
+  "dev": "webpack-dev-server --config webpack.dev.js",
+  "build": "webpack --config webpack.prod.js"
+}
+```
+
+webpack 官方文档提供了详细的[配置分离指导][webpack 生产环境配置]。
+
 ### typescript 编译支持
 
 - 安装 ts-loader
@@ -549,3 +576,4 @@ sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcup
 [troubleshooting - chrome headless doesn't launch]: https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
 [how to fix puppetteer error while loading shared libraries: libx11-xcb.so.1]: https://techoverflow.net/2018/06/05/how-to-fix-puppetteer-error-while-loading-shared-libraries-libx11-xcb-so-1-cannot-open-shared-object-file-no-such-file-or-directory/
 [es6-shim]: https://www.npmjs.com/package/@types/es6-shim
+[webpack 生产环境配置]: https://www.webpackjs.com/guides/production/

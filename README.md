@@ -12,19 +12,23 @@
   - [x] 字体格式：woff, woff2, eot, ttf, otf
   - [x] 音频格式：mp3, ogg, wav
   - [x] 视频格式：mp4, mpg, avi
+  - [x] 开发、生产环境区分配置 - 基于 `webpack-merge`
   - **正确解析本地和 cdn 资源路径**
   - **开发环境配置**
     - [x] dev-server，支持 hot reload
     - [ ] 本地 api 服务器，经 proxy 设置统一访问 url
+    - [ ] 开发环境全局常量 - webpack.DefinePlugin
+    - [ ] 定义开发环境的环境变量 - webpack.EnvironmentPlugin
     - [x] source map 支持
   - **生产环境配置**
     - [ ] 第三方库单独使用 cdn
     - [ ] tree shaking
     - [ ] 多个入口，chunk
-    - [ ] 压缩
-    - [ ] 混淆 - uglifyjs-webpack-plugin
-    - [ ] 单独提取 css 文件
-    - [ ] 轻量 source map
+    - [x] js 压缩、混淆 - uglifyjs-webpack-plugin
+    - [ ] css 抽取、压缩 - mini-css-extract-plugin
+    - [ ] 生产环境全局常量 - webpack.DefinePlugin
+    - [ ] 定义生产环境的环境变量 - webpack.EnvironmentPlugin
+    - [x] 取消 source map
 - typescript
   - [x] 基本配置，通过 `tsconfig.json`
   - [x] 识别非 ts 代码资源类型文件，通过 `ts-shim.d.ts`

@@ -5,5 +5,9 @@ var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'production',
-  plugins: [new UglifyJSPlugin()]
+  plugins: [
+    new UglifyJSPlugin({
+      sourceMap: true
+    })
+  ]
 })
