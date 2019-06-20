@@ -1,11 +1,16 @@
-<template>
-  <div id="app">
-    <h1>欢迎来到 Vue.js 的世界</h1>
-    <h2>{{ msg }}</h2>
-    Name: <input v-model="name" type="text">
-    <hello-component :name="name" :initialEnthusiasm="5" />
-    <counter-component />
-  </div>
+<template lang="pug">
+div#app
+  h1 Welcome to PUG 世界
+  h2 {{ msg }}
+  input(
+    v-model="name"
+    type="text"
+  )
+  hello-component(
+    ":name"="name"
+    ":initialEnthusiasm"="5"
+  )/
+  counter-component/
 </template>
 
 <script lang="ts">
@@ -29,8 +34,10 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="less" scoped>
+@base: #a9f8ab;
+
 h1, h2 {
-  color: gray;
+  color: @base;
 }
 </style>
