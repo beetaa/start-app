@@ -1,22 +1,16 @@
 var path = require('path')
 var CleanWebpackPlugin = require('clean-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-
-var postcssLoader = {
-  loader: 'postcss-loader',
-  options: {
-    ident: 'postcss',
-    plugins: [require('autoprefixer')()]
-  }
-}
+var VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
+    extensions: ['.vue', '.ts', '.js', '.json'],
     mainFiles: ['index']
   },
   entry: {
-    app: './src/index.ts'
+    app: './src/app.ts',
+    landing: './src/landing.ts'
   },
   output: {
     filename: '[name].bundle.js',
@@ -26,17 +20,38 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        // 应用到普通的 ts 文件，以及 vue 组件中的 ts 代码块
         test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        loader: 'ts-loader',
+        options: { appendTsSuffixTo: [/\.vue$/] }
       },
       {
+        // 应用到普通的 css 文件，以及 vue 组件中的 css 样式
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', postcssLoader]
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
       },
       {
+        // 应用到普通的 less 文件，以及 vue 组件中的 less 样式
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', postcssLoader, 'less-loader']
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+      },
+      {
+        test: /\.pug$/,
+        oneOf: [
+          // 这条规则应用到 Vue 组件内的 `<template lang="pug">`
+          {
+            resourceQuery: /^\?vue/,
+            use: ['pug-plain-loader']
+          },
+          // 这条规则应用到 JavaScript 内的 pug 导入
+          {
+            use: ['raw-loader', 'pug-plain-loader']
+          }
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -58,9 +73,18 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      title: '标题',
-      template: 'index.html'
+      template: 'template.landing.html',
+      title: '主页',
+      chunks: ['landing'],
+      filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: 'template.app.html',
+      title: '应用',
+      chunks: ['app'],
+      filename: 'app.html'
     })
   ]
 }

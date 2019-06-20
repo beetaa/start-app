@@ -1,12 +1,18 @@
 /**
  * 让 typescript 处理非代码资源
  *
+ * - vue 单文件支持
  * - 样式文件：css
  * - 图像：pgn|svg|jpg|gif
  * - 字体：woff|woff2|eot|ttf|otf
  * - 音频：mp3|ogg|wav
  * - 视频：mp4|mpg|avi
  */
+
+declare module "*.vue" {
+  import Vue from "vue";
+  export default Vue;
+}
 
 declare module '*.css' {
   const content: any
