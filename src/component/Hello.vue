@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
+    <div class="bg-gray-300 greeting">Hello {{name}}{{exclamationMarks}}</div>
     <button @click="decrement">-</button>
     <button @click="increment">+</button>
   </div>
@@ -10,21 +10,23 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: ['name', 'initialEnthusiasm'],
-  data () {
+  data() {
     return {
-      enthusiasm: this.initialEnthusiasm,
+      enthusiasm: this.initialEnthusiasm
     }
   },
   methods: {
-    increment () { this.enthusiasm++ },
-    decrement () {
+    increment() {
+      this.enthusiasm++
+    },
+    decrement() {
       if (this.enthusiasm > 1) {
         this.enthusiasm--
       }
-    },
+    }
   },
   computed: {
-    exclamationMarks (): string {
+    exclamationMarks(): string {
       return Array(this.enthusiasm + 1).join('!')
     }
   }
@@ -34,6 +36,6 @@ export default Vue.extend({
 <style>
 .greeting {
   font-size: 20px;
-  color: green;
+  color: red;
 }
 </style>
