@@ -1,21 +1,22 @@
 <template lang="pug">
   div.flex.overflow-hidden.h-screen
-    div(style={width: '20rem'})
-      //- 左面板
-      app-left/
-    div.relative.flex-auto
-      //- 主区，代码区
-    div.border-l(style={width: '18rem'})
-      //- 右面板
+    //- 左
+    app-left/
+    //- 中
+    app-main/
+    //- 右
+    app-right/
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 import AppLeft from './AppLeft.vue'
+import AppMain from './AppMain.vue'
+import AppRight from './AppRight.vue'
 
 export default Vue.extend({
-  components: { AppLeft }
+  components: { AppLeft, AppMain, AppRight }
 })
 </script>
 

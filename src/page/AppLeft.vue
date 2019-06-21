@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.flex.flex-col.h-full
+  div.flex.flex-col.h-full(style={width: '20rem'})
     //- 标签栏，根据用户点击切换显示状态
     div.flex
       //- 这里将用相应按钮组件代替
@@ -8,14 +8,19 @@
         i.eva.eva-github.mr-1/ 任务
       div(class="hover:border-purple-500").flex-1.py-3.text-center.text-white.cursor-pointer.bg-purple-500.border-b-8.border-purple-700 资源
       div(class="hover:border-teal-500").flex-1.py-3.text-center.text-white.cursor-pointer.bg-teal-500.border-b-8.border-teal-700 运行
+      z-button-nav/
     //- 内容栏，根据标签栏状态切换显示内容
-    div.flex-auto.bg-gray-200
+    div.flex-auto
+      div.h-full.bg-teal-100
 
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-// 使用枚举来存储组件状态
-export default Vue.extend({})
+import ZButtonNav from '../component/ZButtonNav.vue'
+
+export default Vue.extend({
+  components: { ZButtonNav }
+})
 </script>
