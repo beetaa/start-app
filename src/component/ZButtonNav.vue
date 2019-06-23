@@ -1,5 +1,6 @@
 <template lang="pug">
-  div(class=compClass) {{ text }}
+  div(:class="compClass")
+    i(v-if="hasIcon" :class="`eva eva-${iconName} mr-1`")/ {{ text }}
 </template>
 
 <script lang="ts">
@@ -7,10 +8,11 @@ import Vue from 'vue'
 export default Vue.extend({
   computed: {
     compClass(): string {
-      const colors = `bg-${this.bgColor}-500 border-${this.bgColor}-700 hover:border-${this.bgColor}-500 text-${this.textColor}`
-      const ret = this.baseClass.join(' ') + ' ' + colors
-      alert(ret)
-      return ret
+      const colors = `bg-${this.bgColor}-500 border-${this.bgColor}-700 hover:bg-${this.bgColor}-600 hover:border-${this.bgColor}-600 text-${this.textColor}`
+      return this.baseClass.join(' ') + ' ' + colors
+    },
+    hasIcon(): boolean {
+      return this.iconName.length > 0
     }
   },
   data() {
@@ -21,6 +23,10 @@ export default Vue.extend({
   props: {
     bgColor: {
       default: 'gray',
+      type: String
+    },
+    iconName: {
+      default: '',
       type: String
     },
     text: {
