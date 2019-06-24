@@ -5,6 +5,9 @@
     "semicolon": [true, "never"],
     "no-console": false,
     "eofline": false,
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "forin": false,
     "no-consecutive-blank-lines": true
   }
 }

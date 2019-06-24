@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(@click="togglePanel(panelName)" :class="dynamicStyle").flex-1.p-3.border-r-4.select-none
-    i(v-if="hasIcon" :class="`eva eva-${iconName}`")/ {{ text }}
+  div(@click="toggleControlButton(buttonName)" :class="dynamicStyle" class="flex-1 py-3 border-b-8 inline-flex items-center justify-center")
+    i(:class="`eva eva-${iconName}`")
 </template>
 
 <script lang="ts">
@@ -12,43 +12,41 @@ export default Vue.extend({
   computed: {
     dynamicStyle(): string {
       const style = this.isActive
-        ? `bg-${this.bgColor}-600 border-${this.bgColor}-600`
+        ? `bg-${this.activeColor}-500 border-${this.activeColor}-700`
         : `bg-${this.bgColor}-500 border-${this.bgColor}-700`
       return `${style} hover:bg-${this.bgColor}-600 hover:border-${this.bgColor}-600 text-${this.textColor}`
     },
-    hasIcon(): boolean {
-      return this.iconName.length > 1
-    },
     isActive(): boolean {
-      return this.$store.state.ui.rightPanels[this.panelName]
+      return this.$store.state.ui.controlButtons[this.buttonName]
     }
   },
   props: {
-    panelName: {
+    buttonName: {
       default: '',
       type: String
     },
     bgColor: {
-      default: 'gray',
-      type: String
-    },
-    iconName: {
-      default: '',
-      type: String
-    },
-    text: {
-      default: '按钮',
+      default: 'teal',
       type: String
     },
     textColor: {
       default: 'white',
       type: String
+    },
+    activeColor: {
+      default: 'orange',
+      type: String
+    },
+    iconName: {
+      default: 'options-outline',
+      type: String
     }
   },
   methods: {
-    togglePanel(panelName: string): void {
-      this.$store.commit(UI.prefix + UI.TOGGLE_RIGHT_PANEL, panelName)
+    toggleControlButton(buttonName: string): void {
+      this.$store.commit(UI.prefix + UI.TOGGLE_CONTROL_BUTTON, buttonName)
     }
   }
 })
 </script>
+

@@ -20,14 +20,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
         // 应用到普通的 ts 文件，以及 vue 组件中的 ts 代码块
         test: /\.ts$/,
         loader: 'ts-loader',
         options: { appendTsSuffixTo: [/\.vue$/] }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         // 应用到普通的 css 文件，以及 vue 组件中的 css 样式
