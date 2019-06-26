@@ -6,7 +6,7 @@ export default {
     leftPanels: {
       home: false,
       task: false,
-      hub: false,
+      box: false,
       run: true
     },
     rightPanels: {

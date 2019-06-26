@@ -4,7 +4,7 @@
     div.flex
       z-button-nav(navName="home" text='LOGO' iconName='' bgColor='orange')/
       z-button-nav(navName="task" text='任务' iconName='map-outline' bgColor='blue')/
-      z-button-nav(navName="hub" text='资源' iconName='cube-outline' bgColor='purple')/
+      z-button-nav(navName="box" text='宝盒' iconName='cube-outline' bgColor='purple')/
       z-button-nav(navName="run" text='运行' iconName='flash-outline' bgColor='teal')/
     //- 内容栏，根据标签栏状态切换显示内容
     div.flex-1
@@ -12,8 +12,8 @@
         p 主页
       div(v-if="isTask").h-full.bg-blue-200
         p 任务
-      div(v-if="isHub").h-full.bg-purple-200
-        p 资源
+      div(v-if="isBox").h-full.bg-purple-200
+        p 宝盒
       div(v-if="isRun").h-full.bg-teal-200
         <!-- 模拟器 -->
         div.w-full.bg-teal-100(style={height: '25rem'})
@@ -46,8 +46,8 @@ export default Vue.extend({
     isTask(): boolean {
       return this.$store.state.ui.leftPanels['task']
     },
-    isHub(): boolean {
-      return this.$store.state.ui.leftPanels['hub']
+    isBox(): boolean {
+      return this.$store.state.ui.leftPanels['box']
     },
     isRun(): boolean {
       return this.$store.state.ui.leftPanels['run']
